@@ -12,3 +12,16 @@ code {
     monospace;
 }
 
+
+/* Style the header */
+.header {
+  padding: 10px 16px;
+  background: white;
+  color: black;
+  box-shadow: 0px 2px 5px grey;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
