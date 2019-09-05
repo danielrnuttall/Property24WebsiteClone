@@ -8,6 +8,7 @@ import logIn from './logIn';
 import signUp from './signUp';
 import properties from './properties';
 import Navbar from './navbar';
+import Property from './Property';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -24,6 +25,7 @@ const routing = (
         <Route path="/logIn" component={logIn} />
         <Route path="/signUp" component={signUp} />
         <Route path="/properties" component={properties} />
+        <Route path="/Property" component={Property} />
       </div>
     </Router>
   )
