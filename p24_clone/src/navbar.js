@@ -53,8 +53,8 @@ export default function Navbar() {
                 </Nav>
             </Modal.Header>
             <Modal.Body>
-                <div class="row">
-                    <signUp style={modalStyle}/>
+                <div class="row" style={modalStyle}>
+                    <signUp/>
                 </div>
             </Modal.Body>
 

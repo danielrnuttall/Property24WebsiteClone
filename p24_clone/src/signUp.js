@@ -3,7 +3,7 @@ import React from 'react'
 import '../node_modules/materialize-css/dist/css/materialize.min.css'
 import '../node_modules/materialize-css/dist/js/materialize.min.js'
 
-class SignUp extends React.Component {
+export class SignUp extends React.Component {
   render() {
     return (
       <div className="section">
