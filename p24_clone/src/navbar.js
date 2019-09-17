@@ -7,7 +7,6 @@ import '../node_modules/materialize-css/dist/js/materialize.min.js'
 
 import logo from './logo.jpg';
 
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Nav from 'react-bootstrap/Nav';
 
@@ -15,6 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import logIn from './logIn';
 import signUp from './signUp';
+import PropPlace from './PropPlace';
 
 export default function Navbar() {
 
@@ -39,27 +39,21 @@ export default function Navbar() {
 
             <Modal show={show} onHide={handleClose} animation={false}>
             <Modal.Header className="justify-content-center">
-            <Nav variant="tabs" defaultActiveKey="/home">
-                <Nav.Item>
-                    <Nav.Link class="black-text">SignUp</Nav.Link>
-                </Nav.Item>
+                <Nav variant="tabs">
+                    <Nav.Item>
+                        <Nav.Link class="black-text">SignUp</Nav.Link>
+                    </Nav.Item>
 
-                <Nav.Item>
-                    <Nav.Link class="black-text">Login</Nav.Link>
-                </Nav.Item>
-            </Nav>
+                    <Nav.Item>
+                        <Nav.Link class="black-text">Login</Nav.Link>
+                    </Nav.Item>
+                </Nav>
             </Modal.Header>
-            <Modal.Body>
-                <h1>test</h1>
+            <Modal.Body height="400">
+                <div height="400">
+                    <signUp/>
+                </div>
             </Modal.Body>
-            <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-            Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-            Save Changes
-            </Button>
-            </Modal.Footer>
             </Modal>
         </nav>
         </div>  

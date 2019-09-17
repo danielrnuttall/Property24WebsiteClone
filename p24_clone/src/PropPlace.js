@@ -23,7 +23,6 @@ export class MapContainer extends React.Component {
                 zoomControl: false,
                 rotateControl: false,
                 fullscreenControl: false,
-                draggable:false
               }}
 
               disableDefaultUI
