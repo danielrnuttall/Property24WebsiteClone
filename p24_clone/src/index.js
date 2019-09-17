@@ -7,7 +7,7 @@ import App from './App';
 import logIn from './logIn';
 import signUp from './signUp';
 import properties from './properties';
-import Navbar from './navbar';
+import Navbar from './Navbar';
 import Property from './Property';
 
 import * as serviceWorker from './serviceWorker';

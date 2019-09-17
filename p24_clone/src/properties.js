@@ -7,6 +7,7 @@ import '../node_modules/materialize-css/dist/js/materialize.min.js'
 
 import PropPlace from './PropPlace';
 
+
 class properties extends React.Component {
   render() {
     return (

@@ -13,7 +13,20 @@ export class MapContainer extends React.Component {
               google={this.props.google}
               zoom={8}
               style={mapStyles}
-              initialCenter={{ lat: 47.444, lng: -122.176}}
+              initialCenter={{ lat: 47.444, lng: -12.176}}// set his senter via prop
+              
+              defaultOptions={{
+                streetViewControl: false,
+                scaleControl: false,
+                mapTypeControl: false,
+                panControl: false,
+                zoomControl: false,
+                rotateControl: false,
+                fullscreenControl: false,
+                draggable:false
+              }}
+
+              disableDefaultUI
             >
             <Marker position={{ lat: 48.00, lng: -122.00}} />
             </Map>
