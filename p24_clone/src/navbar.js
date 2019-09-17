@@ -13,8 +13,11 @@ import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import logIn from './logIn';
-import signUp from './signUp';
-import PropPlace from './PropPlace';
+import signUp from "./SignUp";
+
+const modalStyle = {
+    height: '300px',
+  };
 
 export default function Navbar() {
 
@@ -37,7 +40,7 @@ export default function Navbar() {
                 </ul>
             </div>
 
-            <Modal show={show} onHide={handleClose} animation={false}>
+            <Modal show={show} onHide={handleClose}>
             <Modal.Header className="justify-content-center">
                 <Nav variant="tabs">
                     <Nav.Item>
@@ -49,11 +52,15 @@ export default function Navbar() {
                     </Nav.Item>
                 </Nav>
             </Modal.Header>
-            <Modal.Body height="400">
-                <div height="400">
-                    <signUp/>
+            <Modal.Body>
+                <div class="row">
+                    <signUp style={modalStyle}/>
                 </div>
             </Modal.Body>
+
+            <Modal.Footer>
+                
+            </Modal.Footer>
             </Modal>
         </nav>
         </div>  
