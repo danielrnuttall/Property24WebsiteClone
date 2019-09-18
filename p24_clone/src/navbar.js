@@ -13,6 +13,7 @@ import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import logIn from './logIn';
+import propPlace from './PropPlace';
 import signUp from "./SignUp";
 
 const modalStyle = {
@@ -52,11 +53,8 @@ export default function Navbar() {
                     </Nav.Item>
                 </Nav>
             </Modal.Header>
-            <Modal.Body>
-                <div class="row" style={modalStyle}>
-                    <signUp/>
-                </div>
-            </Modal.Body>
+
+            <signUp></signUp>
 
             <Modal.Footer>
                 
