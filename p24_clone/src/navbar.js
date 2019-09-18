@@ -12,9 +12,8 @@ import Nav from 'react-bootstrap/Nav';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import logIn from './logIn';
-import propPlace from './PropPlace';
-import signUp from "./SignUp";
+import SignUp from "./SignUp";
+import SignIn from "./logIn";
 
 const modalStyle = {
     height: '300px',
@@ -23,9 +22,13 @@ const modalStyle = {
 export default function Navbar() {
 
     const [show, setShow] = React.useState(false);
+    
+    const [sui, setSui] = React.useState(false);
+
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
     
     return (
         <div>
@@ -45,19 +48,20 @@ export default function Navbar() {
             <Modal.Header className="justify-content-center">
                 <Nav variant="tabs">
                     <Nav.Item>
-                        <Nav.Link class="black-text">SignUp</Nav.Link>
+                        <Nav.Link class="black-text" onClick={() => setSui(true)}>SignUp</Nav.Link>
                     </Nav.Item>
-
                     <Nav.Item>
-                        <Nav.Link class="black-text">Login</Nav.Link>
+                        <Nav.Link class="black-text" onClick={() => setSui(false)}>Login</Nav.Link>
                     </Nav.Item>
                 </Nav>
             </Modal.Header>
-
-            <signUp></signUp>
-
+            <Modal.Body style={{modalStyle}}>
+                <div style={{modalStyle}}>
+                {(!sui) ?  <SignIn/> : <SignUp/>}
+                </div>
+            </Modal.Body>
             <Modal.Footer>
-                
+            
             </Modal.Footer>
             </Modal>
         </nav>
