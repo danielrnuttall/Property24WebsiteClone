@@ -21,14 +21,8 @@ class login extends React.Component {
           </div>
         </div>
 
-        <div class="row justify-content-center">
-          <div class="col s6 ">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
-          </div>
-
-          <div class="col s6">
-            <button class="btn waves-effect waves-light" type="cancel" name="action">Cancel</button>
-          </div>
+        <div className="row justify-content-center">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Sign In</button>
         </div>
       </div>
     );

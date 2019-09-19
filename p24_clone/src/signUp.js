@@ -33,6 +33,9 @@ export class SignUp extends React.Component {
               </div>
             </form>
           </div>
+          <div className="row justify-content-center">
+            <button class="btn waves-effect waves-light" type="register" name="action">Register</button>
+          </div>
         </div>
     );
   }
