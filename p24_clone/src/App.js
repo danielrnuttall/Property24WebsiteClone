@@ -7,7 +7,12 @@ import './App.css';
 
 function App() {
   return (
-      <h1>home</h1>
+    <>
+      <h1>Welcome</h1>
+      <h5>
+        This is the shitest piece of shite clone to have ever been seen.
+      </h5>
+    </>
   );
 }
 
