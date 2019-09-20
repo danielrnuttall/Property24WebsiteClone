@@ -1,0 +1,43 @@
+import React from 'react'
+
+import '../node_modules/materialize-css/dist/css/materialize.min.css'
+import '../node_modules/materialize-css/dist/js/materialize.min.js'
+
+export class SignUp extends React.Component {
+  render() {
+    return (
+      <div className="section">
+        <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name" type="text" class="validate"/>
+                  <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name" type="text" class="validate"/>
+                  <label for="last_name">Last Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="password" type="password" class="validate"/>
+                  <label for="password">Password</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="email" type="email" class="validate"/>
+                  <label for="email">Email</label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div className="row justify-content-center">
+            <button class="btn waves-effect waves-light" type="register" name="action">Register</button>
+          </div>
+        </div>
+    );
+  }
+}
+export default SignUp
