@@ -5,12 +5,15 @@ import {Link} from 'react-router-dom';
 //import '../node_modules/materialize-css/dist/css/materialize.min.css'
 //import '../node_modules/materialize-css/dist/js/materialize.min.js'
 
+
 import logo from './logo.jpg';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Modal from 'react-bootstrap/Modal';
 import Nav from 'react-bootstrap/Nav';
+import Style from './navbar.css';
 
 import SignUp from "./SignUp";
 import SignIn from "./logIn";
@@ -45,7 +48,7 @@ export default function Navbar() {
             </div>
         </nav>        
         
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} style={{Style}}>
             <Modal.Header className="justify-content-center">
                 <Nav variant="tabs">
                     <Nav.Item active>
@@ -56,7 +59,7 @@ export default function Navbar() {
                     </Nav.Item>
                 </Nav>
             </Modal.Header>
-            <Modal.Body style={{modalStyle}}>
+            <Modal.Body>
                 <div>
                     {(!sui) ?  <SignIn/> : <SignUp/>}
                 </div>
