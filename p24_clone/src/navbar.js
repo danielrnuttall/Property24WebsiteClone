@@ -1,16 +1,19 @@
 import React from 'react';
+
 import {Link} from 'react-router-dom';
+
+//import '../node_modules/materialize-css/dist/css/materialize.min.css'
+//import '../node_modules/materialize-css/dist/js/materialize.min.js'
 
 import logo from './logo.jpg';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Modal from 'react-bootstrap/Modal';
 import Nav from 'react-bootstrap/Nav';
 
 import SignUp from "./SignUp";
 import SignIn from "./logIn";
-
-import Style from "./nav.css";
 
 import { SocialIcon } from 'react-social-icons';
 
@@ -42,7 +45,7 @@ export default function Navbar() {
             </div>
         </nav>        
         
-        <Modal show={show} onHide={handleClose} style={{Style}}>
+        <Modal show={show} onHide={handleClose}>
             <Modal.Header className="justify-content-center">
                 <Nav variant="tabs">
                     <Nav.Item active>
