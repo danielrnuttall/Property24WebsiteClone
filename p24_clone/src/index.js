@@ -23,7 +23,7 @@ const routing = (
       <div className="container">
         <Route exact path="/" component={App} />
         <Route path="/logIn" component={logIn} />
-        <Route path="/signUp" component={signUp} />
+        <Route path="/SignUp" component={signUp} />
         <Route path="/properties" component={properties} />
         <Route path="/Property" component={Property} />
       </div>
