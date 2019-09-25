@@ -16,9 +16,7 @@ class Property extends React.Component {
                     <p>Property discription</p>
                 </div>
                 <div class="row">
-                    <div class ="col s12 m6">
-                        <PropPlace/>
-                    </div>
+                    <PropPlace/>
                 </div>
             </div>
         );
