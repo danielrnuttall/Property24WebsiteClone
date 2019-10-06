@@ -17,7 +17,14 @@ import '../node_modules/materialize-css/dist/js/materialize.min.js'
 
 import './index.css';
 
-const routing = (
+import {createStore} from 'redux';
+import { Provider } from 'react-redux';
+
+const store = createStore();
+
+
+const routing = ({ store }) => (
+  <Provider store={store}>
     <Router>
       <Navbar/>
       <div className="container">
@@ -28,6 +35,7 @@ const routing = (
         <Route path="/Property" component={Property} />
       </div>
     </Router>
+  </Provider>
   )
 
 ReactDOM.render(routing, document.getElementById('root'))
