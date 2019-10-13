@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Image, View, StyleSheet } from 'react-native';
+import {Image, View, StyleSheet, FlatList, Alert } from 'react-native';
 import {Card, } from 'react-native-paper';
 import {Button, Icon, Text} from 'native-base';
 import * as ImagePicker from 'expo-image-picker';
@@ -7,23 +7,44 @@ import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
 import colors from '../Constants/colors';
 import Fonts from '../Constants/Fonts';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 
+let key = 0;
 
 export default class ImageBlock extends React.Component {
 
-  state = {
-      images: []
-  }
+    state = {
+        images: []
+    }
+
+
+    deleteImage = (key) => {
+        Alert.alert("Deleting Image",
+        "Are you sure you want to delete that image?",
+        [
+            {text: "Cancel", onPress: () => console.log("Cancelled"), style: 'cancel'},
+            {text: "Confirm", onPress: () => this.state.images.splice(key)}
+        ]
+        )
+    }
+  
 
   render() {
-
     let {images} = this.state;
 
     return (
       <Card style={styles.screen}>
           <View style={styles.ImageContainer}>
-            <Image source = {{uri: images[0]}} style={{width: "100%", height: "100%", resizeMode: "stretch"}}/>
+            <FlatList horizontal={true} data={images} 
+            renderItem={({item, index, seperators}) => (
+                <TouchableHighlight>
+                    <Card style={{height: 160, width: 160, marginHorizontal: 2}}>
+                        <Image source={{uri: item.uri}} style={{height: 160, width: 160, resizeMode: 'stretch', borderRadius: 12}}/>
+                    </Card>
+                </TouchableHighlight>
+            )}
+            />
           </View>
           <View style = {styles.buttonContainer}>
                 <Button primary iconLeft style={styles.buttonBox} onPress={this._takeImage}>
@@ -60,16 +81,14 @@ export default class ImageBlock extends React.Component {
       aspect: [4, 3],
     });
 
-    console.log(result);
-
     if (!result.cancelled) {
         this.setState({
-            images: [...this.state.images, result.uri]
-            
-        })
+            images: [...this.state.images, {uri: result.uri, key: key}]
+        });
+
+        key++;
     }
   };
-
 
 
   _pickImage = async () => {
@@ -79,27 +98,26 @@ export default class ImageBlock extends React.Component {
       aspect: [4, 3],
     });
 
-    console.log(result);
-
     if (!result.cancelled) {
         this.setState({
-            images: [...this.state.images, result.uri]
-        })
+            images: [...this.state.images, {uri: result.uri, key: key}]
+        });
+
+        key++;
     }
   };
-
 }
 
 const styles = StyleSheet.create({
     screen: {
-        height: 400,
-        margin: 10,
-        padding: 10
+        height: 250,
+        padding: 10,
+        alignItems: "center",
+        justifyContent: 'center'
     },
 
     ImageContainer: {
-        flex: 1,
-        height: 200,
+        height: 170,
     },
 
     buttonContainer: {
