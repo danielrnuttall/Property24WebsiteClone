@@ -1,7 +1,9 @@
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
+import colors from '../Constants/colors';
+
+//Screens used:
 import ViewListings from '../Screens/ViewListings';
 import UserProfile from '../Screens/UserProfile';
-import colors from '../Constants/colors';
 
 export default createMaterialTopTabNavigator(
 {

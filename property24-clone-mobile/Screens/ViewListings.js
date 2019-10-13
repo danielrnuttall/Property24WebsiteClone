@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, FlatList} from 'react-native';
 
 import PropertyBlock from '../Components/PropertyBlock';
 import AddFAB from '../Components/AddFAB';
+import { NavigationActions } from 'react-navigation';
 
 
 
@@ -16,7 +17,6 @@ export default class ViewListings extends React.Component{
       }
     }
 
-
     render(){
     return(
         <View style={styles.container}>
@@ -29,7 +29,7 @@ export default class ViewListings extends React.Component{
           ]}
           renderItem={({item}) => <PropertyBlock style={styles.item} source={item.source} title={item.title} name={item.name} price={item.price}/>}
         />
-      <AddFAB />
+      <AddFAB onPress={() => this.props.navigation.navigate('CreateListing')} />
       
       </View>
     )
