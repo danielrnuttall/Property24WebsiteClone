@@ -3,12 +3,12 @@ import { StyleSheet } from 'react-native';
 import { FAB } from 'react-native-paper';
 import colors from '../Constants/colors';
 
-const AddFAB = () => (
+const AddFAB = props => (
   <FAB
     style={styles.fab}
     small
     icon="add"
-    onPress={() => console.log('Pressed')}
+    {...props}
   />
 );
 

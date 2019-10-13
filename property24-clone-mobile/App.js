@@ -11,7 +11,9 @@ import ViewListings from './Screens/ViewListings';
 import UserProfile from './Screens/UserProfile';
 import Login from './Screens/Login';
 import SplashScreen from './Screens/SplashScreen';
-import ViewProperty from './Screens/ViewProperty';
+import CreateListing from './Screens/CreateListing';
+
+
 
 const RootStack = createStackNavigator(
   {
@@ -20,7 +22,8 @@ const RootStack = createStackNavigator(
     ViewListings: {screen: TabNavigator, navigationOptions: {headerStyle: {backgroundColor: colors.primary}, headerLeft: null, title: "Property24", headerTintColor: colors.white}},
     UserProfile: {screen: UserProfile, title: "User Profile"},
     SplashScreen: {screen: SplashScreen, navigationOptions: {header: null}},
-    ViewProperty: {screen: ViewProperty}
+    CreateListing: {screen: CreateListing, navigationOptions: {title: "Create a Listing"}}
+    
   },
 
   {

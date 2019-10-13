@@ -15,7 +15,6 @@ const Login = props => {
     const navigation = props.navigation;
     
 
-
     return(
         <KeyboardAvoidingView styles={styles.Screen} behavior="position">
             <Image style= {styles.Logo} resizeMode={"center"} source={require("../assets/property24.png")}/>
