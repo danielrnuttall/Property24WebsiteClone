@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Text, Image, KeyboardAvoidingView} from 'react-native';
 import {Button} from 'native-base';
+import {connect} from 'react-redux';
 
 import InputField from '../Components/InputField'
 import Fonts from '../Constants/Fonts';
@@ -108,4 +109,12 @@ const styles = StyleSheet.create({
 
 });
 
-export default Login;
+const mapStateToProps = state => {
+    return state;
+}
+
+const mapActionsToProps = {
+    onUpdateUser: updateUser
+};
+
+export default Connect(mapStateToProps, mapActionsToProps)(Login);

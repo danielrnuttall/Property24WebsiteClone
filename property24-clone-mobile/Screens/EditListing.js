@@ -7,18 +7,29 @@ import Fonts from '../Constants/Fonts';
 import colors from '../Constants/colors';
 
 
-export default class CreateListing extends React.Component {
+export default class EditListing extends React.Component {
     state = {
-        name: "",
-        address: "",
-        price: 0
+        name: "5 Johnston House",
+        address: "5 Morters House, Milnerton, 8001",
+        price: "R2,400,000"
+    }
+
+    static navigationOptions = {
+        headerTitle: "Editing Property",
     }
 
     render(){
         return(
             <KeyboardAvoidingView styles={styles.screen} behavior='position'>
                 <ScrollView style={{padding: 10}}>
-                    <Text style={styles.imageTitle}>Property Images</Text>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                        <Text style={styles.imageTitle}>Property Images</Text>
+                        <Button transparent
+                            onPress={() => this.props.navigation.goBack()}
+                        >
+                            <Text style={{color: 'red'}}>Delete</Text>
+                        </Button>
+                    </View>
                     <ImageBlock style={{borderWidth: 1, borderColor: colors.primary}}/>
                     <Text style={styles.propertyDetailsHeading}>Property Details</Text>
                     
@@ -63,7 +74,7 @@ export default class CreateListing extends React.Component {
                             <Text style={styles.buttonText}>Cancel</Text>
                         </Button>
                         <Button bordered style={styles.button}>
-                            <Text style={styles.buttonText}>Create</Text>
+                            <Text style={styles.buttonText}>Submit</Text>
                         </Button>
                     </View>
                 </ScrollView>    

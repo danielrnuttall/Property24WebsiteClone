@@ -12,21 +12,10 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 
 let key = 0;
 
-export default class ImageBlock extends React.Component {
+export default class ViewImageBlock extends React.Component {
 
     state = {
         images: []
-    }
-
-
-    deleteImage = (key) => {
-        Alert.alert("Deleting Image",
-        "Are you sure you want to delete that image?",
-        [
-            {text: "Cancel", onPress: () => console.log("Cancelled"), style: 'cancel'},
-            {text: "Confirm", onPress: () => this.state.images.splice(key)}
-        ]
-        )
     }
   
 
@@ -46,16 +35,6 @@ export default class ImageBlock extends React.Component {
             )}
             />
           </View>
-          <View style = {styles.buttonContainer}>
-                <Button  primary iconLeft style={styles.buttonBox} onPress={this._takeImage}>
-                    <Icon name='camera' style={styles.buttonIcon}/>
-                    <Text style={styles.buttonText}>Take a photo</Text>
-                </Button>
-                <Button  bordered iconLeft style={styles.buttonBox} onPress={this._pickImage}>
-                    <Icon name='image'/>
-                    <Text style={styles.buttonText}>Choose a photo</Text>
-                </Button>
-           </View>
       </Card>
     );
   }
