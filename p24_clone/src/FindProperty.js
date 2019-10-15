@@ -17,16 +17,16 @@ function FindProperty() {
 
   return (
     
-    <form class="col s12">
+    <form class="col 12">
         <div class="input-field col s6">
             <input placeholder="Search for a City, Suburb or Web Ref..." id="search" type="text" class="black-text white mt-2"/>
             <label for="search" class="white-text">For sale</label>
         </div>
 
         <a class="waves-effect white-text btn red mt-4" onClick={handleShow}>Search</a>
-
-        { show ? <Properties /> : null }
-
+        
+        { show ? <div class="mt-10"><Properties /></div> : null }
+        
     </form>
   );
 }

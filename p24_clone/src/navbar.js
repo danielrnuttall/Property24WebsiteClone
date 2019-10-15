@@ -37,8 +37,9 @@ export default function Navbar() {
           <nav>
             <div class="nav-wrapper white">
                 <Link to="/" class="left brand-logo grey-text">
-                    <img src={logo} alt="Logo" width="200" />
+                    <img src={logo} alt="Logo" width="200"/>
                 </Link>
+                
                 <ul id="nav-mobile" class="right">
                     <li><Link class="blue-text" onClick={handleShow}>Login</Link></li>
                     <li><Link class="blue-text" onClick={handleShow}>Signup</Link></li>
