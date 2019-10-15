@@ -1,9 +1,9 @@
 const express = require("express")
 const router = express.Router()
 
-const Customer = require("C:/Users/Alien/Desktop/Bolt projects/p24_clone/p24_database/models/customers")
-const Agent = require("C:/Users/Alien/Desktop/Bolt projects/p24_clone/p24_database/models/agents")
-const Property = require("C:/Users/Alien/Desktop/Bolt projects/p24_clone/p24_database/models/properties")
+const Customer = require("D:/Ziao/p24_clone/p24_database/models/customers")
+const Agent = require("D:/Ziao/p24_clone/p24_database/models/agents")
+const Property = require("D:/Ziao/p24_clone/p24_database/models/properties")
 
 
 //get list of customers from db

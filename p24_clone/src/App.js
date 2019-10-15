@@ -5,11 +5,21 @@ import '../node_modules/materialize-css/dist/js/materialize.min.js'
 
 import './App.css';
 
-
+import FindProperty from './FindProperty';
 
 function App() {
   return (
-      <h1>home</h1>
+    <div class="light-blue darken-2 mt-5">
+      <form >
+        <div class="row ml-2 white-text" >
+          <h1>Find Property for sale</h1>
+        </div>
+        
+        <div class="row ml-2" >
+          <FindProperty/>
+        </div>
+      </form>
+    </div>
   );
 }
 

@@ -7,11 +7,15 @@ import '../node_modules/materialize-css/dist/js/materialize.min.js'
 
 import PropPlace from './PropPlace';
 
+const mapStyles = {
+  width: '100%',
+  height: '40%',
+};
 
 class properties extends React.Component {
   render() {
     return (
-      <div class="row">
+      <div class="row mt-5">
         <div class="col s12 m6">
           
             <div class="card blue-grey darken-1 hoverable">
@@ -23,7 +27,7 @@ class properties extends React.Component {
               </div>
             </Link>
               <div>
-                <PropPlace/>
+              <PropPlace mapStyles ={mapStyles}/>
               </div>
             </div>
           

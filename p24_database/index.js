@@ -8,7 +8,7 @@ const bodyParser = require("body-parser")
 const app = express()
 
 //connect to mongodb
-mongoose.connect("mongodb+srv://Dannynutdude:Goaway123@property24-z6bx5.mongodb.net/admin?retryWrites=true&w=majority", {useNewUrlParser: true})
+mongoose.connect("mongodb+srv://Dannynutdude:Goaway123@property24-z6bx5.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true})
 
 
 app.use(bodyParser.json())

@@ -5,10 +5,15 @@ import '../node_modules/materialize-css/dist/js/materialize.min.js'
 
 import PropPlace from './PropPlace';
 
+const mapStyle = {
+    width: '50%',
+    height: '40%',
+};
+
 class Property extends React.Component { 
     render() {
         return (
-            <div className="section">
+            <div className="section" class="mt-5">
                 <div class="row">
                     <h3>Property name</h3>
                 </div>
@@ -16,7 +21,7 @@ class Property extends React.Component {
                     <p>Property discription</p>
                 </div>
                 <div class="row">
-                    <PropPlace/>
+                    <PropPlace mapStyles ={mapStyle}/>
                 </div>
             </div>
         );
