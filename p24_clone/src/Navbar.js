@@ -19,10 +19,6 @@ import SignIn from "./logIn";
 
 import { SocialIcon } from 'react-social-icons';
 
-const modalStyle = {
-    height: '300px',
-};
-
 export default function Navbar() {
 
     const [show, setShow] = React.useState(false);
@@ -39,7 +35,7 @@ export default function Navbar() {
                 <Link to="/" class="left brand-logo grey-text">
                     <img src={logo} alt="Logo" width="200"/>
                 </Link>
-                
+
                 <ul id="nav-mobile" class="right">
                     <li><Link class="blue-text" onClick={handleShow}>Login</Link></li>
                     <li><Link class="blue-text" onClick={handleShow}>Signup</Link></li>
