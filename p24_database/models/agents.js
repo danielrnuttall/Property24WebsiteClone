@@ -1,3 +1,5 @@
+
+
 const mongoose = require('mongoose')
 
 const agentSchema = new mongoose.Schema({
@@ -23,6 +25,7 @@ const agentSchema = new mongoose.Schema({
     }
 })
 
-const Agent = mongoose.model('Agent', agentSchema)
+const Agent = mongoose.model('agent', agentSchema)
+//Agent
 
 module.exports = Agent

@@ -8,13 +8,15 @@ const bodyParser = require("body-parser")
 const app = express()
 
 //connect to mongodb
-mongoose.connect("mongodb+srv://Dannynutdude:Goaway123@property24-z6bx5.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true})
-
+mongoose.connect("mongodb+srv://Dannynutdude:Goaway123@property24-z6bx5.mongodb.net/test", {useNewUrlParser: true})
+//var db = mongoose.connection
 
 app.use(bodyParser.json())
 
 //initialise routes
 app.use("/api", routes)
+
+//module.exports = db
 
 //Listen for requests
 app.listen(process.env.port || 4000, function(){

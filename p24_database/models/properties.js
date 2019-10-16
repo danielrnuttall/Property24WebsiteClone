@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 
 const propertySchema = new mongoose.Schema({
 
+    
     name: {
         type: String,
         required: [true, 'A name is required']
@@ -24,6 +25,7 @@ const propertySchema = new mongoose.Schema({
     }
 })
 
-const Property = mongoose.model('Property', propertySchema)
+const Property = mongoose.model('property', propertySchema)
+//Property
 
 module.exports = Property
