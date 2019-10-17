@@ -39,7 +39,12 @@ export default function Navbar() {
                 <ul id="nav-mobile" class="right">
                     <li><Link class="blue-text" onClick={handleShow}>Login</Link></li>
                     <li><Link class="blue-text" onClick={handleShow}>Signup</Link></li>
-                    <li><Link to="/properties" class="black-text">Properties</Link></li>
+                    <li><Link to={{
+                        pathname: '/properties',
+                        state: {
+                            search: ''
+                        }
+                        }} class="black-text">Properties</Link></li>
                 </ul>
             </div>
         </nav>        
