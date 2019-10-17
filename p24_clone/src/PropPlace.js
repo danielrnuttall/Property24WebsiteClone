@@ -1,10 +1,13 @@
 import React from 'react'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
-const Lat = {
-  lat: parseFloat('47.444, -12.176'.split(', ')[0]),
-  lng: parseFloat('47.444, -12.176'.split(', ')[1]) 
-};
+const Lat = (props) =>{
+  var pos = props.pos;
+  return({
+    lat: parseFloat(pos.split(', ')[0]),
+    lng: parseFloat(pos.split(', ')[1])
+  })
+}
 
 export class MapContainer extends React.Component {
     render() {
@@ -12,9 +15,9 @@ export class MapContainer extends React.Component {
             <Map
               google={this.props.google}
               zoom={8}
-
+              
               style={this.props.mapStyles}
-              initialCenter={Lat}// set his senter via prop
+              initialCenter={Lat(this.props)}// set his senter via prop
               
               defaultOptions={{
                 streetViewControl: false,
@@ -28,7 +31,7 @@ export class MapContainer extends React.Component {
 
               disableDefaultUI
             >
-            <Marker position={{ lat: 48.00, lng: -122.00}} />
+            <Marker position={Lat(this.props)} />
             </Map>
         );
       }

@@ -12,16 +12,25 @@ const mapStyle = {
 
 class Property extends React.Component { 
     render() {
+         
         return (
             <div className="section" class="mt-5">
                 <div class="row">
-                    <h3>Property name</h3>
+                    <h3>{this.props.location.state.name}</h3>
                 </div>
                 <div class="row">
-                    <p>Property discription</p>
+                    <p>{this.props.location.state.description}</p>
                 </div>
                 <div class="row">
-                    <PropPlace mapStyles ={mapStyle}/>
+                    <div class="col">
+                        <img src={this.props.location.state.img} alt="Italian Trulli" style={{width:300}}/>
+                    </div>
+                    <div class="col">
+                        <h2>Price: {this.props.location.state.price}</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <PropPlace mapStyles ={mapStyle} pos = {this.props.location.state.pos}/>
                 </div>
             </div>
         );

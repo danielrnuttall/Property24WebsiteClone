@@ -16,11 +16,8 @@ const mapStyles = {
   height: '40%',
 };
 
-
-
 class properties extends React.Component {
   render() {
-    console.log(this.props);
     const { properties } = this.props; 
 
     const propList = properties.length ? (
@@ -28,11 +25,19 @@ class properties extends React.Component {
             return (
               <div class="col s12 m6">
                   <div class="card blue-grey darken-1 hoverable">
-                  <Link to = "/Property">
+                  <Link to={{
+                      pathname: '/Property',
+                      state: {
+                        name: properties.name,
+                        description: properties.description,
+                        price: properties.price,
+                        pos: properties.location,
+                        img: properties.imageURL
+                      }
+                    }}>
                     <div class="card-content white-text">
                       <span class="card-title">{properties.name}</span>
-                      <p>I am a very simple card. I am good at containing small bits of information.
-                      I am convenient because I require little markup to use effectively.</p>
+                      <p>{properties.description}</p>
                     </div>
                   </Link>
                     <div>
@@ -43,6 +48,7 @@ class properties extends React.Component {
             )
         })
     ) : (<div>no properties found</div>)
+  
 
     return (
       <div class="mt-5">
