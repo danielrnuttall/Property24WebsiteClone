@@ -6,12 +6,15 @@ import ViewImageBlock from '../Components/ViewImageBlock';
 import Fonts from '../Constants/Fonts';
 import colors from '../Constants/colors';
 
+//REDUX METHODS
+import {connect} from 'react-redux'
 
-export default class CreateListing extends React.Component {
+class ViewListing extends React.Component {
     state = {
-        name: "3 Bedroom Mansion",
-        address: "25 Zaio Road, Milnerton, 7441",
-        price: "R2,400,000"
+        name: this.props.navigation.getParam("name"),
+        address: this.props.navigation.getParam("address"),
+        price: this.props.navigation.getParam("price"),
+        images: this.props.navigation.getParam("images", [])
     }
 
     static navigationOptions = {
@@ -25,12 +28,12 @@ export default class CreateListing extends React.Component {
             <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                 <Text style={styles.imageTitle}>Property Images</Text>
                 <Button transparent
-                onPress={() => this.props.navigation.navigate("EditListing")}
+                onPress={() => this.props.navigation.replace("EditListing", {name: this.state.name, address: this.state.address, images: this.state.imageUrl, price: this.state.price})}
                 >
                     <Text style={{color: colors.primary}}>Edit</Text>
                 </Button>
             </View>
-            <ViewImageBlock style={{borderWidth: 1, borderColor: colors.primary}}/>
+            <ViewImageBlock images={this.state.images} style={{borderWidth: 1, borderColor: colors.primary}}/>
             <Text style={styles.propertyDetailsHeading}>Property Details</Text>
             
             <Card style={styles.propertyDetailsCard}>
@@ -71,8 +74,6 @@ export default class CreateListing extends React.Component {
         )
     }
 
-
-    
 }
 
 
@@ -112,3 +113,7 @@ const styles = StyleSheet.create({
 
  
 });
+
+
+
+export default connect()(ViewListing);

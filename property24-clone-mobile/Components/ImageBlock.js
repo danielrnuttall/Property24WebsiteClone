@@ -10,8 +10,6 @@ import Fonts from '../Constants/Fonts';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 
 
-let key = 0;
-
 export default class ImageBlock extends React.Component {
 
     state = {
@@ -19,14 +17,8 @@ export default class ImageBlock extends React.Component {
     }
 
 
-    deleteImage = (key) => {
-        Alert.alert("Deleting Image",
-        "Are you sure you want to delete that image?",
-        [
-            {text: "Cancel", onPress: () => console.log("Cancelled"), style: 'cancel'},
-            {text: "Confirm", onPress: () => this.state.images.splice(key)}
-        ]
-        )
+    sendData = (images) => {
+      this.props.parentCallBack(images);
     }
   
 
@@ -36,7 +28,7 @@ export default class ImageBlock extends React.Component {
     return (
       <Card {...this.props} style={{...this.props.style, ...styles.screen}}>
           <View style={styles.ImageContainer}>
-            <FlatList horizontal={true} data={images} 
+            <FlatList horizontal={true} data={this.state.images} 
             renderItem={({item, index, seperators}) => (
                 <TouchableHighlight>
                     <Card style={{height: 160, width: 160, marginHorizontal: 2}}>
@@ -83,10 +75,10 @@ export default class ImageBlock extends React.Component {
 
     if (!result.cancelled) {
         this.setState({
-            images: [...this.state.images, {uri: result.uri, key: key}]
+            images: [...this.state.images, {uri: result.uri}]
         });
 
-        key++;
+        this.sendData(this.state.images);
     }
   };
 
@@ -100,10 +92,10 @@ export default class ImageBlock extends React.Component {
 
     if (!result.cancelled) {
         this.setState({
-            images: [...this.state.images, {uri: result.uri, key: key}]
+            images: [...this.state.images, {uri: result.uri}]
         });
+        this.sendData(this.state.images);
 
-        key++;
     }
   };
 }

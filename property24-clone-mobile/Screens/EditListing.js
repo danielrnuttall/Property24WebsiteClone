@@ -1,17 +1,26 @@
 import * as React from 'react';
-import {View, StyleSheet, KeyboardAvoidingView, ScrollView } from 'react-native';
+import {View, StyleSheet, KeyboardAvoidingView, ScrollView, Alert } from 'react-native';
 import {Card, TextInput} from 'react-native-paper';
 import {Button, Text} from 'native-base';
 import ImageBlock from '../Components/ImageBlock';
 import Fonts from '../Constants/Fonts';
 import colors from '../Constants/colors';
 
+//Redux imports
+import {connect} from 'react-redux';
+import {deleteProperty, modifyProperty} from '../Redux/Actions/PropertyActions';
+import {bindActionCreators} from 'redux';
 
-export default class EditListing extends React.Component {
+class EditListing extends React.Component {
+    constructor(props){
+        super(props);
+    }
+
     state = {
-        name: "5 Johnston House",
-        address: "5 Morters House, Milnerton, 8001",
-        price: "R2,400,000"
+        name: this.props.navigation.getParam("name"),
+        address: this.props.navigation.getParam("address"),
+        price: this.props.navigation.getParam("price"),
+        images: this.props.navigation.getParam("images", [])
     }
 
     static navigationOptions = {
@@ -19,18 +28,45 @@ export default class EditListing extends React.Component {
     }
 
     render(){
+        const callBackFunction = (images) => {
+            this.setState({images: images})
+            console.log(this.state.images)
+        }
+
+         function deleteEntry(){ 
+            this.props.deleteProp(this.state.location);
+            this.props.navigation.goBack();
+        }
+
+        const deleteAlert = () => {
+            Alert.alert(
+                'Warning',
+                'Do you want to delete this property?',
+                [
+                    {
+                        text: 'Cancel',
+                        style: 'cancel'
+                    },
+                    {
+                        text: "Okay",
+                        onPress: () => deleteEntry()
+                    }
+                ]
+            )
+        }
+
         return(
             <KeyboardAvoidingView styles={styles.screen} behavior='position'>
                 <ScrollView style={{padding: 10}}>
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                         <Text style={styles.imageTitle}>Property Images</Text>
                         <Button transparent
-                            onPress={() => this.props.navigation.goBack()}
+                            onPress={deleteAlert}
                         >
                             <Text style={{color: 'red'}}>Delete</Text>
                         </Button>
                     </View>
-                    <ImageBlock style={{borderWidth: 1, borderColor: colors.primary}}/>
+                    <ImageBlock parentCallBack = {callBackFunction} images={this.state.images} style={{borderWidth: 1, borderColor: colors.primary}}/>
                     <Text style={styles.propertyDetailsHeading}>Property Details</Text>
                     
                     <Card style={styles.propertyDetailsCard}>
@@ -139,3 +175,17 @@ const styles = StyleSheet.create({
     }
  
 });
+
+
+const mapStatesToProps = state => ({
+    user: state.user,
+})
+
+const mapActionsToProps = (dispatch, props) => {
+    return bindActionCreators({
+        deleteProp: deleteProperty,
+        editProp : modifyProperty
+    }, dispatch);
+}
+
+export default connect(mapStatesToProps, mapActionsToProps)(EditListing);

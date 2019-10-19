@@ -1,6 +1,6 @@
-export function registerUser(email, name, password){
+export function LoginUser( name, email, password){
     return{
-        type: 'ADD_USER',
+        type: 'LOGIN_USER',
         payload: {
             email: email,
             name: name,

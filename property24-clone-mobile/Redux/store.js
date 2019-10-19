@@ -5,15 +5,15 @@ import {combineReducers, createStore} from 'redux';
 //Reducers used
 import PropertyReducer from './Reducers/PropertyReducer';
 import UserReducer from './Reducers/UserReducer';
+import LoginReducer from './Reducers/LoginReducer';
 
-const allReducers = combineReducers({
-    property: PropertyReducer,
-    user: UserReducer
+const rootReducer = combineReducers({
+    properties: PropertyReducer,
+    users: UserReducer,
+    user: LoginReducer
 });
 
 
-const store = createStore(allReducers, {
-    //Pass in initial state or data.
-});
+const store = createStore(rootReducer);
 
 export default store

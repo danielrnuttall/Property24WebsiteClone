@@ -7,19 +7,37 @@ import Fonts from '../Constants/Fonts';
 import colors from '../Constants/colors';
 
 
-export default class CreateListing extends React.Component {
+//REDUX IMPORTS
+import {connect} from 'react-redux';
+import {addProperty} from '../Redux/Actions/PropertyActions';
+import {bindActionCreators} from 'redux'
+
+
+class CreateListing extends React.Component {
     state = {
         name: "",
         address: "",
-        price: 0
+        price: 0,
+        imageUrl: []
     }
 
     render(){
+
+        const callBackFunction = (images) => {
+            this.setState({imageUrl: images})
+            console.log(this.state.imageUrl)
+        }
+
+        const newProperty = () => {
+            this.props.createListing(this.props.user[0].email, this.state.name, this.state.address, this.state.imageUrl, this.state.price);
+            this.props.navigation.goBack();
+        }
+
         return(
             <KeyboardAvoidingView styles={styles.screen} behavior='position'>
                 <ScrollView style={{padding: 10}}>
                     <Text style={styles.imageTitle}>Property Images</Text>
-                    <ImageBlock style={{borderWidth: 1, borderColor: colors.primary}}/>
+                    <ImageBlock parentCallBack = {callBackFunction} style={{borderWidth: 1, borderColor: colors.primary}}/>
                     <Text style={styles.propertyDetailsHeading}>Property Details</Text>
                     
                     <Card style={styles.propertyDetailsCard}>
@@ -63,7 +81,7 @@ export default class CreateListing extends React.Component {
                             <Text style={styles.buttonText}>Cancel</Text>
                         </Button>
                         <Button bordered style={styles.button}>
-                            <Text style={styles.buttonText}>Create</Text>
+                            <Text onPress={newProperty} style={styles.buttonText}>Create</Text>
                         </Button>
                     </View>
                 </ScrollView>    
@@ -128,3 +146,16 @@ const styles = StyleSheet.create({
     }
  
 });
+
+
+const mapStatesToProps = state => ({
+    user: state.user
+})
+
+const mapActionsToProps = (dispatch, props) => {
+    return bindActionCreators({
+        createListing: addProperty
+    }, dispatch);
+}
+
+export default connect(mapStatesToProps, mapActionsToProps)(CreateListing);

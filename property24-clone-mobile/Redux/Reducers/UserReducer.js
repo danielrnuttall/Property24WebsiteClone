@@ -1,12 +1,17 @@
-import {UPDATE_USER} from '../Actions/UserActions';
+const tempData = [{name: "John Doe", email: "johndoe@gmail.com", password: "123"}, {name: "Joe Dohn", email: "jd@gmail.com", password: "123"}]
 
-
-export default function UserReducer(state = [], {type, payload}){
+export default function UserReducer(state = tempData, {type, payload}){
     switch(type){
-        case UPDATE_USER:
-            return payload.user;
+        case 'ADD_USER':
+            return[
+                ...state, {
+                    name: payload.name,
+                    email: payload.email,
+                    password: payload.password    
+                }
+            ]
 
-        default:
+        default: 
             return state;
     }
 }

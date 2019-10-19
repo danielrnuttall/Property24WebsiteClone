@@ -6,9 +6,15 @@ import AddFAB from '../Components/AddFAB';
 import { NavigationActions } from 'react-navigation';
 
 
+import { connect } from 'react-redux';
 
 
-export default class ViewListings extends React.Component{
+
+
+class ViewListings extends React.Component{
+  constructor(props){
+    super(props);
+  }
 
     static navigationOptions = ({navigation}) => {
 
@@ -17,19 +23,19 @@ export default class ViewListings extends React.Component{
       }
     }
 
+
     render(){
+      const email = this.props.user[0].email; //Const used to track the current users email.
+
     return(
         <View style={styles.container}>
         <FlatList
-          data={[
-            {key: "1", source: {uri: 'https://thepropertyboutique.files.wordpress.com/2017/03/sustainable_buildings.jpg'}, title: "21 Marksons Road, Blouberg, 7441", name: "3 Bedroom Villa", price: "R2,400,000",},
-            {key: "2", source: {uri: 'https://images.prop24.com/220826887/Crop526x328'}, title: "5 Jansen Road, Milnerton, 7441", name: "2 Bedroom Seaside House", price: "R1,380,000",},
-            {key: "3", source: {uri: 'https://assets.themortgagereports.com/wp-content/uploads/2018/07/featured-new-template-1.jpg'}, title: "25 Bloom Street, Cape Town, 8001", name: "4 Bedroom Modern House", price: "R4,950,000",},
-            {key: "4", source: {uri: 'https://s3-ap-southeast-1.amazonaws.com/static.starproperty.my/star-properties/properties/5c526ab0963776.42301335-thehazelmeridineast/thumbnail/5d2c501c25e6f.jpg'}, title: "22 Aranstone Road, Observatory, 7661", name: "4 Room Apartment Building", price: "R7,450,000",},
-          ]}
-          renderItem={({item}) => <PropertyBlock onPress={() => this.props.navigation.navigate("ViewListing")} style={styles.item} source={item.source} title={item.title} name={item.name} price={item.price}/>}
+          data = {this.props.properties.filter(function(property){
+            return property.email == email
+          })}
+          renderItem={({item}) => <PropertyBlock onPress={() => this.props.navigation.navigate("ViewListing", {name: item.name, address: item.address, images: item.imageUrl, price: item.price})} style={styles.item} source={item.imageUrl} title={item.address} name={item.name} price={item.price}/>}
         />
-      <AddFAB onPress={() => this.props.navigation.navigate('CreateListing')} />
+      <AddFAB onPress={() => this.props.navigation.navigate("CreateListing")}/>
       
       </View>
     )
@@ -48,3 +54,10 @@ const styles = StyleSheet.create({
         marginVertical: 6,
       },
 });
+
+const mapStatesToProps = state => ({
+  properties: state.properties,
+  user: state.user
+})
+
+export default connect(mapStatesToProps)(ViewListings);

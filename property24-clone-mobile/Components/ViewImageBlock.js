@@ -14,18 +14,14 @@ let key = 0;
 
 export default class ViewImageBlock extends React.Component {
 
-    state = {
-        images: []
-    }
   
 
   render() {
-    let {images} = this.state;
 
     return (
       <Card {...this.props} style={{...this.props.style, ...styles.screen}}>
           <View style={styles.ImageContainer}>
-            <FlatList horizontal={true} data={images} 
+            <FlatList horizontal={true} data={this.props.images}
             renderItem={({item, index, seperators}) => (
                 <TouchableHighlight>
                     <Card style={{height: 160, width: 160, marginHorizontal: 2}}>
